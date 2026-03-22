@@ -1,5 +1,7 @@
 # autotune -- Autonomous prompt chain optimizer
 
+[![License: Apache-2.0](https://img.shields.io/badge/License-Apache_2.0-blue.svg)](LICENSE)
+
 Autonomous prompt chain optimization. An AI agent edits a prompt chain, evaluates it against test cases, keeps improvements, discards regressions, and repeats -- indefinitely. You wake up to a log of experiments and a better chain.
 
 > Inspired by [@karpathy's autoresearch](https://github.com/karpathy/autoresearch), which applies the same autonomous experiment loop to neural network training. autotune adapts that paradigm from model training to prompt engineering.
@@ -157,4 +159,4 @@ This rewards both quality and cost efficiency.
 
 ## License
 
-MIT
+Apache-2.0 — see [LICENSE](LICENSE).
