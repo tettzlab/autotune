@@ -1,0 +1,56 @@
+[project]
+name = "autotune"
+version = "0.1.0"
+description = "Autonomous prompt chain optimizer"
+readme = "README.md"
+requires-python = ">=3.11"
+dependencies = [
+    "pydantic-ai>=1.70.0",
+    "ipykernel>=7.2.0",
+    "matplotlib>=3.10.8",
+    "nbconvert>=7.17.0",
+    "pandas>=2.3.3",
+]
+
+[dependency-groups]
+dev = [
+    "mypy>=1.19.1",
+    "ruff>=0.15.7",
+    "taskipy>=1.14.1",
+]
+
+[tool.mypy]
+python_version = "3.11"
+strict = true
+warn_return_any = true
+warn_unused_configs = true
+disallow_untyped_defs = true
+disallow_incomplete_defs = true
+
+[tool.ruff]
+target-version = "py311"
+line-length = 100
+
+[tool.ruff.lint]
+select = [
+    "E",    # pycodestyle errors
+    "W",    # pycodestyle warnings
+    "F",    # pyflakes
+    "I",    # isort
+    "N",    # pep8-naming
+    "UP",   # pyupgrade
+    "B",    # flake8-bugbear
+    "SIM",  # flake8-simplify
+    "TCH",  # type-checking imports
+    "RUF",  # ruff-specific
+]
+ignore = ["E501", "UP047"]  # line length handled by formatter; UP047 TypeVar style is fine
+
+[tool.taskipy.tasks]
+format = "ruff check --select I --fix . && ruff format ."
+lint = "ruff check . && ruff format --check ."
+"lint:fix" = "ruff check --fix ."
+typecheck = "mypy *.py"
+validate = "task lint && task typecheck"
+clean = "rm -fv run.log"
+"clean:all" = "rm -fv .research.lock run.log && rm -rfv __pycache__/ .mypy_cache/ .ruff_cache/"

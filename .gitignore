@@ -1,0 +1,16 @@
+__pycache__/
+!.env.example
+.DS_Store
+.env
+.env.*
+.mypy_cache/
+.research.lock
+.ruff_cache/
+.venv
+*.egg-info
+*.py[oc]
+AGENTS.md
+build/
+CLAUDE.md
+dist/
+run.log

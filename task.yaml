@@ -1,0 +1,33 @@
+# Task definition for autotune.
+#
+# This file defines WHAT the prompt chain produces and HOW it's evaluated.
+# To adapt autotune to a new domain, change this file, criteria.md,
+# and the test cases in test_cases/. No framework code changes needed.
+
+name: "Novel Plot Outline"
+
+description: >
+  Generate a detailed, compelling plot outline for a novel or story from a
+  premise, genre, and character descriptions. The outline should include
+  story structure, character arcs, key scenes, conflicts, and thematic depth.
+
+# Input fields the chain receives. Test case JSON files must have these keys.
+# The chain function signature is: run_chain(inputs: dict[str, str]) -> str
+inputs:
+  - name: premise
+    description: "A short description of the story's core concept, setting, and central conflict"
+  - name: genre
+    description: "The genre and tone (e.g. literary fiction, sci-fi thriller, dark fantasy)"
+  - name: characters
+    description: "Markdown describing the main characters, their backgrounds, motivations, and relationships"
+
+# What the chain produces (used in judge framing and documentation).
+output:
+  name: plot_outline
+  description: "A detailed novel plot outline in markdown"
+
+# The judge's role description, used as the opening line of the judge system prompt.
+# Should describe what kind of expert the judge is.
+judge_role: >
+  You are an expert fiction editor and story structure analyst who has
+  evaluated thousands of novel outlines across all genres.
